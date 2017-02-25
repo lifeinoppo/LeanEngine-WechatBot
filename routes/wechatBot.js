@@ -41,7 +41,7 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
       }
       break;
     default:
-      res.reply({Articles : [
+      res.reply([
         {"Title":"Baidu",  "Description":"Baidu", "PicUrl":"http://www.baidu.com/img/bd_logo1.png", "Url" : "www.baidu.com/s?ie=utf-8&wd="+content },
         {"Title":"SouGou",  "Description":"SouGou", "PicUrl":"https://www.sogou.com/images/logo/new/search400x150.png", "Url" : "http://weixin.sogou.com/weixin?type=2&query="+content+"&ie=utf8&_sug_=n" },
         {"Title":"WangPan",  "Description":"WangPan", "PicUrl":"http://pan.java1234.com/images/logo.png", "Url" :  "http://pan.java1234.com/result.jsp?wp=0&op=0&ty=gn&q="+content },
@@ -52,7 +52,7 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
         {"Title":"JD",  "Description":"JingDong", "PicUrl":"https://misc.360buyimg.com/lib/img/e/logo-201305.png", "Url" : "http://search.jd.com/Search?keyword="+content+"&enc=utf-8"},
         {"Title":"guoke",  "Description":"guoke", "PicUrl":"https://sslstatic.guokr.com/skin/imgs/motto.png", "Url" : "http://m.guokr.com/search/all/?wd="+content },
         {"Title":"WeiBo",  "Description":"Weibo", "PicUrl":"http://img.t.sinajs.cn/t6/style/images/global_nav/WB_logo_b.png", "Url" : "http://s.weibo.com/weibo/"+content+"&Refer=index"} 
-     ]});
+     ]);
       break;
   }
 }).image(function(message, req, res, next) {
