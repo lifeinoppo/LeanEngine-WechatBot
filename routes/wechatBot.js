@@ -41,10 +41,14 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
       }
       break;
     default:
-      res.reply({
-        type: "text",
-        content: '服务器挂掉了，你的要求暂时无法满足……'
-      });
+      res.reply([
+	      {
+	        title: '你来我家接我吧',
+	        description: '这是女神与高富帅之间的对话',
+	        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
+	        url: 'http://nodeapi.cloudfoundry.com/'
+	      }
+      ]);
       break;
   }
 }).image(function(message, req, res, next) {
