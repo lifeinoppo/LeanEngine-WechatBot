@@ -41,14 +41,18 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
       }
       break;
     default:
-      res.reply([
-	      {
-	        title: '你来我家接我吧',
-	        description: '这是女神与高富帅之间的对话',
-	        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-	        url: 'http://nodeapi.cloudfoundry.com/'
-	      }
-      ]);
+      res.reply({Articles : [
+        {"Title":"Baidu",  "Description":"Baidu", "PicUrl":"http://www.baidu.com/img/bd_logo1.png", "Url" : "www.baidu.com/s?ie=utf-8&wd="+content },
+        {"Title":"SouGou",  "Description":"SouGou", "PicUrl":"https://www.sogou.com/images/logo/new/search400x150.png", "Url" : "http://weixin.sogou.com/weixin?type=2&query="+content+"&ie=utf8&_sug_=n" },
+        {"Title":"WangPan",  "Description":"WangPan", "PicUrl":"http://pan.java1234.com/images/logo.png", "Url" :  "http://pan.java1234.com/result.jsp?wp=0&op=0&ty=gn&q="+content },
+        {"Title":"BiYing",  "Description":"BiYing", "PicUrl":"http://cn.bing.com/sa/simg/sw_mg_l_4e_ly_cn.png", "Url" : "http://cn.bing.com/search?q="+content },
+        {"Title":"DOUBAN xiaoqingxin",  "Description":"douban", "PicUrl":"https://img3.doubanio.com/f/sns/19886d443852bee48de2ed91f4a3bdfdaf8c809c/pics/nav/logo_db.png", "Url" : "https://www.douban.com/search?q="+content },
+        {"Title":"ZHIHU",  "Description":"zhihu", "PicUrl":"http://static.zhihu.com/static/revved/img/index/logo.6837e927.png", "Url" : "http://zhihu.sogou.com/zhihu?ie=utf8&p=73351201&query="+content },
+        {"Title":"1haodian",  "Description":"1haodian", "PicUrl":"http://d7.yihaodianimg.com/N07/M07/AE/F3/CgQIz1ZyfEqAaJj8AAAPqOO2cwQ12100.png", "Url" : "http://search.yhd.com/c0-0/k"+content },
+        {"Title":"JD",  "Description":"JingDong", "PicUrl":"https://misc.360buyimg.com/lib/img/e/logo-201305.png", "Url" : "http://search.jd.com/Search?keyword="+content+"&enc=utf-8"},
+        {"Title":"guoke",  "Description":"guoke", "PicUrl":"https://sslstatic.guokr.com/skin/imgs/motto.png", "Url" : "http://m.guokr.com/search/all/?wd="+content },
+        {"Title":"WeiBo",  "Description":"Weibo", "PicUrl":"http://img.t.sinajs.cn/t6/style/images/global_nav/WB_logo_b.png", "Url" : "http://s.weibo.com/weibo/"+content+"&Refer=index"} 
+     ]});
       break;
   }
 }).image(function(message, req, res, next) {
