@@ -63,6 +63,10 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
   // MediaId: 'media_id',
   // MsgId: '5837397301622104395' }}).voice(function(message, req, res, next) {
   // TODO
+        res.reply({
+          type: "text",
+          content: '不约，不约，叔叔我们不约！'
+        });
 }).voice(function(message, req, res, next) {
   // message为音频内容
   // { ToUserName: 'gh_d3e07d51b513',
