@@ -54,7 +54,7 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
       {
         // for pic uploading test
 
-        urllib.request('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/35/8/thumb.jpg').then(function (result) {
+        urllib.request('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/35/10/thumb.jpg').then(function (result) {
           // result: {data: buffer, res: response object}
               var test_bucket = service.Bucket('test-bucket767687766','pek3a');
               test_bucket.putObject('test_file4.jpg',{
