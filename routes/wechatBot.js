@@ -31,10 +31,26 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MediaId: 'media_id',
   // MsgId: '5837397301622104395' }}).voice(function(message, req, res, next) {
   // TODO
+        urllib.request(message.PicUrl).then(function (result) {
+          // result: {data: buffer, res: response object}
+              var test_bucket = service.Bucket('from-wechat','pek3a');
+              test_bucket.putObject(message.CreateTime+message.FromUserName+'.jpg',{
+                'body':result.data,
+              },function(err,data){
+                // console.log(data);
+              }); 
+
+         }).catch(function (err) {
+            // console.error(err);
+         });
+  /*
         res.reply({
           type: "text",
-          content: message.PicUrl
+          content: message.CreateTime
         });
+  */
+
+
 }).text(function(message, req, res, next) {
   // message为文本内容
   // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
