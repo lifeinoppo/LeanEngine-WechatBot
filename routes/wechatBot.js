@@ -33,7 +33,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // TODO
         res.reply({
           type: "text",
-          content: '不约，不约，叔叔我们不约！'
+          content: message.PicUrl
         });
 }).text(function(message, req, res, next) {
   // message为文本内容
