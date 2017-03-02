@@ -4,15 +4,17 @@ var wechat = require('wechat');
 
 // for QingCloud init 
 var QingStor = require('qingstor-sdk').QingStor;
-var config = require('qingstor-sdk').Config('SINGMHOWMWATLOXUTWDK','I5elkSzxWLOt16czUtErvgXDiC29ubhRc0Ox0RBB');
+var config = require('qingstor-sdk').Config( process.env.qingid, process.env.qingsecret);
 var service = new QingStor(config);
-var httpsync = require('httpsync');
+var urllib = require('urllib');
 
 
 var config = {
   token: process.env.token,
   appid: process.env.AppID,
-  encodingAESKey: process.env.encodingAESKey
+  encodingAESKey: process.env.encodingAESKey,
+  qingid : process.env.qingid,
+  qingsecret : process.env.qingsecret 
 };
 
 var WechatAPI = require('wechat-api');
@@ -50,20 +52,20 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
       break;
     case 2:
       {
+        // for pic uploading test
 
-        var req = httpsync.get({ url : "http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/35/8/thumb.jpg"});
-        var resbuffer = req.end();
-        var test_bucket = service.Bucket('test-bucket767687766','pek3a');
-        test_bucket.putObject('test_file4.jpg',{
-          'body':resbuffer,
-        },function(err,data){
-          // console.log(data);
-        });
+        urllib.request('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/35/8/thumb.jpg').then(function (result) {
+          // result: {data: buffer, res: response object}
+              var test_bucket = service.Bucket('test-bucket767687766','pek3a');
+              test_bucket.putObject('test_file4.jpg',{
+                'body':result.data,
+              },function(err,data){
+                // console.log(data);
+              }); 
 
-        res.reply({
-          type: "text",
-          content: '泼辣测试!'
-        });
+         }).catch(function (err) {
+            // console.error(err);
+         });
 
       }
       break;
