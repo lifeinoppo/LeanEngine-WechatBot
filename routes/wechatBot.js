@@ -1,6 +1,14 @@
 var router = require('express').Router();
 // 引用 wechat 库，详细请查看 https://github.com/node-webot/wechat
 var wechat = require('wechat');
+
+// for QingCloud init 
+var QingStor = require('qingstor-sdk').QingStor;
+var config = require('qingstor-sdk').Config('SINGMHOWMWATLOXUTWDK','I5elkSzxWLOt16czUtErvgXDiC29ubhRc0Ox0RBB');
+var service = new QingStor(config);
+var httpsync = require('httpsync');
+
+
 var config = {
   token: process.env.token,
   appid: process.env.AppID,
@@ -42,6 +50,16 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
       break;
     case 2:
       {
+
+        var req = httpsync.get({ url : "http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/35/8/thumb.jpg"});
+        var resbuffer = req.end();
+        var test_bucket = service.Bucket('test-bucket767687766','pek3a');
+        test_bucket.putObject('test_file4.jpg',{
+          'body':resbuffer,
+        },function(err,data){
+          // console.log(data);
+        });
+
         res.reply({
           type: "text",
           content: '泼辣测试!'
