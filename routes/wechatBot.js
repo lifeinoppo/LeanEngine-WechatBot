@@ -18,7 +18,7 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
   // MsgType: 'text',
   // Content: 'http',
   // MsgId: '5837397576500011341' }
-  var keyArray = ['你好', '约吗'];
+  var keyArray = ['你好', '约吗','泼辣'];
   var content = message.Content;
   var keyIndex = keyArray.indexOf(content);
   switch (keyIndex) {
@@ -36,6 +36,15 @@ router.use('/', wechat(config.token).text(function(message, req, res, next) {
         res.reply({
           type: "text",
           content: '不约，不约，叔叔我们不约！'
+        });
+
+      }
+      break;
+    case 2:
+      {
+        res.reply({
+          type: "text",
+          content: '泼辣测试!'
         });
 
       }
