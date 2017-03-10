@@ -7,7 +7,6 @@ var QingStor = require('qingstor-sdk').QingStor;
 var qingConfig = require('qingstor-sdk').Config( process.env.qingid, process.env.qingsecret);
 var service = new QingStor(qingConfig);
 var urllib = require('urllib');
-var qiniubucket = require('./qiniubucket.js');
 
 var config = {
   token: process.env.token,
