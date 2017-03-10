@@ -2,6 +2,8 @@ var router = require('express').Router();
 // 引用 wechat 库，详细请查看 https://github.com/node-webot/wechat
 var wechat = require('wechat');
 
+var qiniubucket = require('./qiniubucket.js');
+
 
 var config = {
   token: process.env.token,
@@ -76,6 +78,10 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
 
           
           var filePath = 'http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/36/4/thumb.jpg';
+          var bucket = 'from-wechat';
+          var key = 'test_file1.jpg';
+          var token = qiniubucket.uptoken(bucket,key);
+          qiniubucket.uploadFile(token,key,filePath);
           
 
       }
