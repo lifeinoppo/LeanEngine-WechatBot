@@ -105,10 +105,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
 
           
           var filePath = 'http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/36/4/thumb.jpg';
-          var bucket = 'from-wechat';
-          var key = 'test_file.jpg';
-          var token = qiniubucket.uptoken(bucket, key);
-          qiniubucket.uploadFile(token, key, filePath);
+          
 
       }
       break;
