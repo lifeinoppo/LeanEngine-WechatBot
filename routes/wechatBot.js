@@ -58,7 +58,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MsgType: 'text',
   // Content: 'http',
   // MsgId: '5837397576500011341' }
-  var keyArray = ['你好', '约吗','泼辣'];
+  var keyArray = ['你好', '约吗','泼辣','七头牛'];
   var content = message.Content;
   var keyIndex = keyArray.indexOf(content);
   switch (keyIndex) {
@@ -96,6 +96,19 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
          }).catch(function (err) {
             // console.error(err);
          });
+
+      }
+      break;
+    case 3:
+      {
+        // for pic uploading test
+
+          var qiniubucket = require('./qiniubucket.js');
+          var filePath = 'http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/36/4/thumb.jpg';
+          var bucket = 'from-wechat';
+          var key = 'test_file.jpg';
+          var token = qiniubucket.uptoken(bucket, key);
+          qiniu.uploadFile(token, key, filePath);
 
       }
       break;
