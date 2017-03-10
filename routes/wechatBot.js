@@ -7,7 +7,7 @@ var QingStor = require('qingstor-sdk').QingStor;
 var config = require('qingstor-sdk').Config( process.env.qingid, process.env.qingsecret);
 var service = new QingStor(config);
 var urllib = require('urllib');
-
+var qiniubucket = require('./qiniubucket.js');
 
 var config = {
   token: process.env.token,
@@ -103,12 +103,12 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       {
         // for pic uploading test
 
-          var qiniubucket = require('./qiniubucket.js');
+          
           var filePath = 'http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/36/4/thumb.jpg';
           var bucket = 'from-wechat';
           var key = 'test_file.jpg';
           var token = qiniubucket.uptoken(bucket, key);
-          qiniu.uploadFile(token, key, filePath);
+          qiniubucket.uploadFile(token, key, filePath);
 
       }
       break;
