@@ -4,8 +4,8 @@ var wechat = require('wechat');
 
 // for QingCloud init 
 var QingStor = require('qingstor-sdk').QingStor;
-var config = require('qingstor-sdk').Config( process.env.qingid, process.env.qingsecret);
-var service = new QingStor(config);
+var qingConfig = require('qingstor-sdk').Config( process.env.qingid, process.env.qingsecret);
+var service = new QingStor(qingConfig);
 var urllib = require('urllib');
 var qiniubucket = require('./qiniubucket.js');
 
