@@ -2,11 +2,6 @@ var router = require('express').Router();
 // 引用 wechat 库，详细请查看 https://github.com/node-webot/wechat
 var wechat = require('wechat');
 
-// for QingCloud init 
-var QingStor = require('qingstor-sdk').QingStor;
-var qingConfig = require('qingstor-sdk').Config( process.env.qingid, process.env.qingsecret);
-var service = new QingStor(qingConfig);
-var urllib = require('urllib');
 
 var config = {
   token: process.env.token,
@@ -30,18 +25,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MediaId: 'media_id',
   // MsgId: '5837397301622104395' }}).voice(function(message, req, res, next) {
   // TODO
-        urllib.request(message.PicUrl).then(function (result) {
-          // result: {data: buffer, res: response object}
-              var test_bucket = service.Bucket('from-wechat','pek3a');
-              test_bucket.putObject(message.CreateTime+message.FromUserName+'.jpg',{
-                'body':result.data,
-              },function(err,data){
-                // console.log(data);
-              }); 
-
-         }).catch(function (err) {
-            // console.error(err);
-         });
+      
   /*
         res.reply({
           type: "text",
@@ -83,19 +67,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       {
         // for pic uploading test
 
-        urllib.request('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/35/10/thumb.jpg').then(function (result) {
-          // result: {data: buffer, res: response object}
-              var test_bucket = service.Bucket('test-bucket767687766','pek3a');
-              test_bucket.putObject('test_file4.jpg',{
-                'body':result.data,
-              },function(err,data){
-                // console.log(data);
-              }); 
-
-         }).catch(function (err) {
-            // console.error(err);
-         });
-
+          var ndwejdj = 0;
       }
       break;
     case 3:
