@@ -88,7 +88,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       break;
     default:
       res.reply([
-        {title:'Baidu',  description:'Baidu', picurl:'http://www.baidu.com/img/bd_logo1.png', url : 'www.baidu.com/s?ie=utf-8&wd='+content },
+        {title:'Bilibili',  description:'Bilibili', picurl:'http://i1.hdslb.com/promote/d088cfcb7689f8c5d23cb88caca0c73b.jpg', url : 'http://search.bilibili.com/all?keyword='+content },
         {title:'SouGou',  description:'SouGou', picurl:'https://www.sogou.com/images/logo/new/search400x150.png', url : 'http://weixin.sogou.com/weixin?type=2&query='+content+'&ie=utf8&_sug_=n' },
         {title:'github',  description:'github', picurl:'https://assets-cdn.github.com/images/modules/about/about-header.jpg', url :  'https://github.com/search?utf8=✓&q='+content },
         {title:'BiYing',  description:'BiYing', picurl:'http://cn.bing.com/sa/simg/sw_mg_l_4e_ly_cn.png', url : 'http://cn.bing.com/search?q='+content },
