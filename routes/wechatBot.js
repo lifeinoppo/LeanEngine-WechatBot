@@ -21,7 +21,7 @@ var WechatAPI = require('wechat-api');
 var api = new WechatAPI(process.env.AppID,
   process.env.secretKey);
 
-var ocr = require('baidu-ocr-api').create(baiduak,baidusk);
+var ocr = require('baidu-ocr-api').create(config.baiduak,config.baidusk);
 
 router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // message为图片内容
