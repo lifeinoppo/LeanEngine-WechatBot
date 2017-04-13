@@ -41,7 +41,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
    
     res.reply({
           type: "text",
-          content: result['results']['words']
+          content: message.PicUrl
     });
 
 
