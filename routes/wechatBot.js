@@ -5,17 +5,23 @@ var wechat = require('wechat');
 var qiniubucket = require('./qiniubucket.js');
 
 
+
+
 var config = {
   token: process.env.token,
   appid: process.env.AppID,
   encodingAESKey: process.env.encodingAESKey,
   qingid : process.env.qingid,
-  qingsecret : process.env.qingsecret 
+  qingsecret : process.env.qingsecret,
+  baiduak : process.env.baidu_ak,
+  baidusk : process.env.baidu_sk
 };
 
 var WechatAPI = require('wechat-api');
 var api = new WechatAPI(process.env.AppID,
   process.env.secretKey);
+
+var ocr = require('baidu-ocr-api').create(baiduak,baidusk);
 
 router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // message为图片内容
@@ -28,6 +34,20 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MsgId: '5837397301622104395' }}).voice(function(message, req, res, next) {
   // TODO
       
+  ocr.scan({
+    url:message.PicUrl, // 支持本地路径
+    type:'text',
+  }).then(function (result) {
+   
+    res.reply({
+          type: "text",
+          content: result['results']['words']
+    });
+
+
+  }).catch(function (err) {
+    console.log('err', err);
+  })    
   
         res.reply({
           type: "text",
