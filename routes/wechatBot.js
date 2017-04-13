@@ -49,6 +49,13 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     console.log('err', err);
   })    
   
+  
+    res.reply({
+          type: "text",
+          content: message.PicUrl
+    });
+
+  
 
 }).text(function(message, req, res, next) {
   // message为文本内容
