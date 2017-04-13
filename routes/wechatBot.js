@@ -28,12 +28,12 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MsgId: '5837397301622104395' }}).voice(function(message, req, res, next) {
   // TODO
       
-  /*
+  
         res.reply({
           type: "text",
           content: message.CreateTime
         });
-  */
+  
 
 
 }).text(function(message, req, res, next) {
