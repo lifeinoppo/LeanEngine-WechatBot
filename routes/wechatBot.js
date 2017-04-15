@@ -41,17 +41,14 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     type:'text',
   }).then(function (result) {
 
-    news.set('content', result['results']['words']);
-    news.save().then(function(news) {
-      
-      res.reply({
-          type: "text",
-          content: result['results']['words']
-      });
-
-    }).catch(next);
+    var anew = new news();
+    anew.set('content', result['results']['words']);
+    anew.save();
    
-    
+   res.reply({
+        type: "text",
+        content: result['results']['words']
+    });
 
 
   }).catch(function (err) {
