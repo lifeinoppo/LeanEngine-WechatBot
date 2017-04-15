@@ -4,7 +4,9 @@ var wechat = require('wechat');
 
 var qiniubucket = require('./qiniubucket.js');
 
-
+// for extend to support cloud storage of message
+var AV = require('leanengine');
+var news = AV.Object.extend('news');
 
 
 var config = {
@@ -38,11 +40,18 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     url:message.PicUrl, // 支持本地路径
     type:'text',
   }).then(function (result) {
-   
-    res.reply({
+
+    news.set('content', result['results']['words']);
+    news.save().then(function(news) {
+      
+      res.reply({
           type: "text",
           content: result['results']['words']
-    });
+      });
+
+    }).catch(next);
+   
+    
 
 
   }).catch(function (err) {
