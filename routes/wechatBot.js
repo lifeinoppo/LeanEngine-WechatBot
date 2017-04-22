@@ -131,8 +131,8 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // Format: 'amr',
   // MsgId: '5837397520665436492' }
        res.reply({
-          type: "text",
-          content: message.MediaId
+          type: "voice",
+          MediaId: 'lxMn1EOV1KFE4HDKq1vXnKZ4YKtiD7gJq3feB64M5WkGg-eZXcYAf7t9ThXbZoZe'
         });
    
 
