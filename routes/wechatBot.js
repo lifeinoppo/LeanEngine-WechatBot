@@ -7,6 +7,7 @@ var qiniubucket = require('./qiniubucket.js');
 // for extend to support cloud storage of message
 var AV = require('leanengine');
 var news = AV.Object.extend('news');
+var Answer = AV.Object.extend('answers');
 
 
 var config = {
@@ -130,6 +131,11 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MediaId: 'OMYnpghh8fRfzHL8obuboDN9rmLig4s0xdpoNT6a5BoFZWufbE6srbCKc_bxduzS',
   // Format: 'amr',
   // MsgId: '5837397520665436492' }
+        // save the Mediaid of the answer
+        var answer = new Answer();
+        answer.set('content', message.MediaId);
+        answer.save();
+
         res.reply({
           type: "voice",
           content: {
