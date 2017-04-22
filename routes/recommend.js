@@ -4,6 +4,7 @@ var router = require('express').Router();
 var AV = require('leanengine');
 var _recommend = AV.Object.extend('recommend');
 
+/*
 
 router.use('/', function(message, req, res, next) {
 	// do some thing here , users can determin the need for 
@@ -24,3 +25,5 @@ router.use('/', function(message, req, res, next) {
    });
 
 });	
+
+*/
