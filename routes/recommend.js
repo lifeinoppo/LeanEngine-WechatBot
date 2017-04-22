@@ -1,6 +1,7 @@
 var router = require('express').Router();
 
 // read data from 'recommend' class in lean and show it to terminal users
+var AV = require('leanengine');
 var _recommend = AV.Object.extend('recommend');
 
 
