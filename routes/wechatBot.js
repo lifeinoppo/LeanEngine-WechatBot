@@ -132,7 +132,9 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MsgId: '5837397520665436492' }
        res.reply({
           type: "voice",
-          MediaId: message.MediaId
+          content: {
+            MediaId : message.MediaId
+          }
         });
    
 
@@ -146,10 +148,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // ThumbMediaId: 'media_id',
   // MsgId: '5837397520665436492' }
   // TODO
-        res.reply({
-          type: "text",
-          content: '不约，不约，叔叔我们不约！'
-        });
+        
 }).shortvideo(function(message, req, res, next) {
   // message为短视频内容
   // { ToUserName: 'gh_d3e07d51b513',
@@ -171,10 +170,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // Url: 'http://1024.com/',
   // MsgId: '5837397520665436492' }
   // TODO
-        res.reply({
-          type: "text",
-          content: '不约，不约，叔叔我们不约！'
-        });
+       
 }).link(function(message, req, res, next) {
   // message为链接内容
   // { ToUserName: 'gh_d3e07d51b513',
