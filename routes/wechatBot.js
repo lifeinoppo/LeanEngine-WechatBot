@@ -139,7 +139,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         res.reply({
           type: "voice",
           content: {
-            mediaId: 'lxMn1EOV1KFE4HDKq1vXnKZ4YKtiD7gJq3feB64M5WkGg-eZXcYAf7t9ThXbZoZe'
+            mediaId: 'W_yMCFcsqaxu3Ft6ASiJD4chSwbzYClOyfVj_JMkAuRkI3VnRImHyusNwd9DKsYP'
           }
         });
    
