@@ -132,7 +132,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MsgId: '5837397520665436492' }
        res.reply({
           type: "voice",
-          MediaId: 'lxMn1EOV1KFE4HDKq1vXnKZ4YKtiD7gJq3feB64M5WkGg-eZXcYAf7t9ThXbZoZe'
+          MediaId: message.MediaId
         });
    
 
