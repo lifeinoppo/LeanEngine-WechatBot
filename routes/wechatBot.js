@@ -10,6 +10,17 @@ var news = AV.Object.extend('news');
 var Answer = AV.Object.extend('answers');
 
 
+// voice reply , the book of answer
+var answer_array = [
+    "W_yMCFcsqaxu3Ft6ASiJD4chSwbzYClOyfVj_JMkAuRkI3VnRImHyusNwd9DKsYP",
+    "fBDvj8vvGddUcnxWbFN3PGIcHDOTol0VUk0BwTXjLmUFUmbAOwp65OMSCg3v_3ND",
+    "wpt1OxsB2So44dIOJWugm6ZzFHXg3bhPkWZ3Z_OLeoRpdxSGk11WgQC_sPYAXNHi",
+    "l27N96iEwlDW8IcDCaO26wQQiQt2Yv1Iup0L29MjuNh5ZKOwGP64BMA9xb6HAXbP",
+    "26zu6u6g7zYgC0bOnxceBfgRXReY49XjGzjUZbWCCxV0ptrqscFt83ftWJXxBDBn"
+
+]
+
+
 var config = {
   token: process.env.token,
   appid: process.env.AppID,
@@ -136,10 +147,13 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         answer.set('content', message.MediaId);
         answer.save();
 
+        var bias = 5;
+        var random = new Number(Math.random()*bias).toFixed(0); 
+
         res.reply({
           type: "voice",
           content: {
-            mediaId: 'W_yMCFcsqaxu3Ft6ASiJD4chSwbzYClOyfVj_JMkAuRkI3VnRImHyusNwd9DKsYP'
+            mediaId: answer_array[random]
           }
         });
    
