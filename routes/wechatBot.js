@@ -18,7 +18,7 @@ var answer_array = [
     "l27N96iEwlDW8IcDCaO26wQQiQt2Yv1Iup0L29MjuNh5ZKOwGP64BMA9xb6HAXbP",
     "26zu6u6g7zYgC0bOnxceBfgRXReY49XjGzjUZbWCCxV0ptrqscFt83ftWJXxBDBn"
 
-]
+];
 
 
 var config = {
@@ -143,17 +143,19 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // Format: 'amr',
   // MsgId: '5837397520665436492' }
         // save the Mediaid of the answer
+        /*
         var answer = new Answer();
         answer.set('content', message.MediaId);
         answer.save();
+        */
 
-        var bias = 5;
-        var random = new Number(Math.random()*bias).toFixed(0); 
+        var bias = 5-1;
+        var random_index = new Number(Math.random()*bias).toFixed(0); 
 
         res.reply({
           type: "voice",
           content: {
-            mediaId: answer_array[random]
+            mediaId: answer_array[random_index]
           }
         });
    
