@@ -10,6 +10,14 @@ var news = AV.Object.extend('news');
 var Answer = AV.Object.extend('answers');
 
 
+// most visit links 
+var most_visited_array = [
+"https://nanzhuang.tmall.com",
+"http://www.tianya.cn",
+"http://www.mop.com",
+"http://www.miaopai.com/miaopai/plaza"
+]
+
 // voice reply , the book of answer
 var answer_array = 
 ["http://ww4.sinaimg.cn/large/006tKfTcgy1ff1m70h0jaj30ii0cigpn.jpg",
@@ -257,12 +265,18 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         var bias = answer_array.length-1;
         var random_index = new Number(Math.random()*bias).toFixed(0); 
 
-        res.reply({
-          type: "image",
-          content: {
-            PicUrl: answer_array[random_index]
-          }
+        var bias_link = most_visited_array.length-1;
+        var random_index_link = new Number(Math.random()*bias_link).toFixed(0);
+
+
+        res.reply(
+        {	
+        	title:'answer',  
+        	description:'answer', 
+        	picurl: answer_array[random_index],
+        	url : most_visited_array[random_index_link];
         });
+       
    
 
 }).video(function(message, req, res, next) {
