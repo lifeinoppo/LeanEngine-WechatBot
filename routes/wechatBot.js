@@ -271,13 +271,13 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         var random_index_link = new Number(Math.random()*bias_link).toFixed(0);
 
 
-        res.reply(
+        res.reply([
         {	
         	title:'answer',  
         	description:'answer', 
         	picurl: answer_array[random_index],
         	url : most_visited_array[random_index_link]
-        });
+        }]);
        
    
 
