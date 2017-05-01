@@ -14,9 +14,11 @@ var Answer = AV.Object.extend('answers');
 var most_visited_array = [
 "https://nanzhuang.tmall.com",
 "http://www.tianya.cn",
+"http://jiankang.163.com",
 "http://www.mop.com",
-"http://www.miaopai.com/miaopai/plaza"
-]
+"http://www.miaopai.com/miaopai/plaza"，
+"http://health.sina.com.cn",
+];
 
 // voice reply , the book of answer
 var answer_array = 
@@ -274,7 +276,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         	title:'answer',  
         	description:'answer', 
         	picurl: answer_array[random_index],
-        	url : most_visited_array[random_index_link];
+        	url : most_visited_array[random_index_link]
         });
        
    
