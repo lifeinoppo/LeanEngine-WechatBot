@@ -16,7 +16,7 @@ var most_visited_array = [
 "http://www.tianya.cn",
 "http://jiankang.163.com",
 "http://www.mop.com",
-"http://www.miaopai.com/miaopai/plaza"，
+"http://www.miaopai.com/miaopai/plaza",
 "http://health.sina.com.cn",
 ];
 
