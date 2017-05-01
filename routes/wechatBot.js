@@ -121,6 +121,8 @@ var answer_array =
 "http://ww1.sinaimg.cn/large/006tKfTcgy1ff65rwlhrxj30gg07s78h.jpg",
 "http://ww4.sinaimg.cn/large/006tKfTcgy1ff65rvmvjaj30hc0aa43f.jpg",
 "http://ww3.sinaimg.cn/large/006tKfTcgy1ff65sayaswj30fy05qjuk.jpg",
+"http://ww3.sinaimg.cn/large/006tKfTcgy1ff65sa2hgyj30iw08o7ah.jpg",
+"http://ww3.sinaimg.cn/large/006tKfTcgy1ff65sa2hgyj30iw08o7ah.jpg",
 "http://ww3.sinaimg.cn/large/006tKfTcgy1ff65sa2hgyj30iw08o7ah.jpg"];
 
 
@@ -258,7 +260,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         res.reply({
           type: "image",
           content: {
-            picurl: answer_array[random_index]
+            PicUrl: answer_array[random_index]
           }
         });
    
