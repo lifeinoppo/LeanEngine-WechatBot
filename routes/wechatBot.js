@@ -15,7 +15,7 @@ var most_visited_array = [
 "https://www.tmall.com/wh/tmall/fushi/act/nvzhuang",
 "https://nanzhuang.tmall.com",
 "http://www.tianya.cn",
-"http://www.tuicool.com"
+"http://www.tuicool.com",
 "http://jiankang.163.com",
 "www.xueqiu.com",
 "http://jianggaowang.com",
