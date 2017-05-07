@@ -49,7 +49,7 @@ var bookmarks_array = [
 "http://auraphp.com/",
 "http://www.alloyteam.com/",
 "http://gold.xitu.io/#/",
-"http://jsbin.com/?html"
+"http://jsbin.com/?html",
 "http://nodeframework.com/",
 "https://github.com/trending",
 "http://debug.fangbei.org/",
