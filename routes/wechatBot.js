@@ -773,8 +773,9 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // TODO
   
   // special treats 
+  var special_date = new Date(2017,5,14);
   var date = new Date();
-  if(date.getMonth() === 5 && date.getDate() === 13){
+  if(date.getTime() == special_date.getTime()){
         res.reply([
         { 
           title:'祝啦啦生日快乐～～',  
@@ -784,7 +785,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         }]);
   }
   // end of special events 
-
+  
   ocr.scan({
     url:message.PicUrl, // 支持本地路径
     type:'text',
