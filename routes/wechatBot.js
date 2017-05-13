@@ -12,7 +12,7 @@ var bookmarks = AV.Object.extend('bookmarks');
 
 var special_events = [
   "http://ww2.sinaimg.cn/large/006tKfTcgy1ffk5cqlukoj30b407r0tk.jpg",
-  "https://y.qq.com/portal/player.html"
+  "https://y.qq.com/n/yqq/song/002edeyc0xaACC.html?ADTAG=baiduald&play=1"
 
 ];
 
@@ -775,7 +775,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // special treats 
   var special_date = new Date(2017,5,13);
   var date = new Date();
-  if(date.getDate() == special_date.getDate()){
+  if(date.getDate() == special_date.getDate() && date.getMonth() == special_date.getMonth()){
         res.reply([
         { 
           title:'祝啦啦生日快乐～～',  
