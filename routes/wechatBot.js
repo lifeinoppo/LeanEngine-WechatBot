@@ -10,6 +10,12 @@ var news = AV.Object.extend('news');
 var Answer = AV.Object.extend('answers');
 var bookmarks = AV.Object.extend('bookmarks');
 
+var special_events = [
+  "http://ww2.sinaimg.cn/large/006tKfTcgy1ffk5cqlukoj30b407r0tk.jpg",
+  "https://y.qq.com/portal/player.html"
+
+];
+
 // bookmarks array 
 var bookmarks_array = [
 "http://doxmate.cool/node-webot/wechat/index.html",
@@ -765,7 +771,20 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MediaId: 'media_id',
   // MsgId: '5837397301622104395' }}).voice(function(message, req, res, next) {
   // TODO
-      
+  
+  // special treats 
+  var date = new Date();
+  if(date.getMonth() === 5 && date.getDate() === 13){
+        res.reply([
+        { 
+          title:'祝啦啦生日快乐～～',  
+          description:'愿你有一点好心情，正如这夜空一样宽广，如朝阳一般明朗～', 
+          picurl: special_events[0],
+          url : special_events[1]
+        }]);
+  }
+  // end of special events 
+
   ocr.scan({
     url:message.PicUrl, // 支持本地路径
     type:'text',
