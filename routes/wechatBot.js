@@ -773,7 +773,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // TODO
   
   // special treats 
-  var special_date = new Date(2017,5,14);
+  var special_date = new Date(2017,5,13);
   var date = new Date();
   if(date.getTime() == special_date.getTime()){
         res.reply([
