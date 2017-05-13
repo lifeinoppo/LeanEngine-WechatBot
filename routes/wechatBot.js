@@ -773,9 +773,9 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // TODO
   
   // special treats 
-  var special_date = new Date(2017,5,13);
+  var special_date = new Date(2017,5,14);
   var date = new Date();
-  if(date.getDate() == special_date.getDate() && date.getMonth() == special_date.getMonth()){
+  if(date.getDate() == special_date.getDate() ){
         res.reply([
         { 
           title:'祝啦啦生日快乐～～',  
@@ -815,6 +815,25 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // MsgType: 'text',
   // Content: 'http',
   // MsgId: '5837397576500011341' }
+
+
+  // special treats 
+  var special_date = new Date(2017,5,14);
+  var date = new Date();
+  if(date.getDate() == special_date.getDate() ){
+        res.reply([
+        { 
+          title:'祝啦啦生日快乐～～',  
+          description:'愿你有一点好心情，正如这夜空一样宽广，如朝阳一般明朗～', 
+          picurl: special_events[0],
+          url : special_events[1]
+        }]);
+  }
+  // end of special events 
+
+
+
+
   var keyArray = ['你好', '约吗','泼辣','七头牛'];
   var content = message.Content;
   var keyIndex = keyArray.indexOf(content);
@@ -888,6 +907,22 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         answer.set('content', message.MediaId);
         answer.save();
         */
+
+        // special treats 
+        var special_date = new Date(2017,5,14);
+        var date = new Date();
+        if(date.getDate() == special_date.getDate() ){
+              res.reply([
+              { 
+                title:'祝啦啦生日快乐～～',  
+                description:'愿你有一点好心情，正如这夜空一样宽广，如朝阳一般明朗～', 
+                picurl: special_events[0],
+                url : special_events[1]
+              }]);
+        }
+        // end of special events 
+
+
 
         var bias = answer_array.length-1;
         var random_index = new Number(Math.random()*bias).toFixed(0); 
