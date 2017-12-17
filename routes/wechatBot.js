@@ -939,11 +939,17 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
           content: 'eBook pushed'
     	});
         query.find().then(function (books) {
-		  	var j = books.length;
-		    for(var i=0;i<5;i++){
-		  	  var book = books[i];
-		  	  links.push(book.get('link'));
-		    }
+		  	
+		  	books.forEach(function(book) {
+      			links.push(book.get('link'));
+    		});
+
+		  	// delete all then
+		  	AV.Object.destroyAll(books).then(function () {
+		     // 成功
+		    }, function (error) {
+		     // 异常处理
+		    });
 
 		    const ebook = new EpubPress({
 			    title: 'ebook-today',
@@ -959,9 +965,9 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
 			    
 			});
 
-			}, function (error) {
+		}, function (error) {
 			
-			});
+		});
 
 		
 	    // end of ebook convert 
