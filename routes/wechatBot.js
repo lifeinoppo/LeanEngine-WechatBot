@@ -1060,10 +1060,6 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
 
   	// get the root link , most visited, 
   	// for example,  http://www.baidu.com/s/27363728  ->> http://www.baidu.com
-  	res.reply({
-          type: "text",
-          content: 'link detected'
-    });
 
   	// get the title and urls
   	var title = message.Title;
