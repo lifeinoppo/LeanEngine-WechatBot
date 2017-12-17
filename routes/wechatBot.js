@@ -904,7 +904,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
 
 
 
-  var keyArray = ['你好', '约吗','泼辣','七头牛'];
+  var keyArray = ['你好', '约吗','推送','七头牛'];
   var content = message.Content;
   var keyIndex = keyArray.indexOf(content);
   switch (keyIndex) {
@@ -928,9 +928,38 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       break;
     case 2:
       {
-        // for pic uploading test
+        // for epub ebook make 
+        // convert link to ebook
+        // first, get book links 
+        var query = new AV.Query('weblinks');
+        query.include('link');
+        var links = ['http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html'];
+        query.find().then(function (results) {
+		  for(var result in results){
+		  	links.push(result.get('link'));
+		  }
+		}, function (error) {
+		});
 
-          var ndwejdj = 0;
+	    const ebook = new EpubPress({
+		    title: 'ebook today',
+		    description: 'multi-articles',
+		    urls: links
+		});
+		ebook.publish().then(() =>
+			//ebook.download('epub')
+		    ebook.email('workinoppo@163.com')
+		).then(() => {
+		    res.reply({
+	          type: "text",
+	          content: 'eBook pushed'
+	    	});
+		}).catch((error) => {
+		    
+		});
+
+	    // end of ebook convert 
+        // epub make end 
       }
       break;
     case 3:
