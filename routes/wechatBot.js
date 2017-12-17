@@ -940,28 +940,30 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     	});
         query.find().then(function (books) {
 		  	var j = books.length;
-		    for(var i=0;i<books.length;i++){
+		    for(var i=0;i<5;i++){
 		  	  var book = books[i];
 		  	  links.push(book.get('link'));
 		    }
 
-		}, function (error) {
-		
-		});
+		    const ebook = new EpubPress({
+			    title: 'ebook-today',
+			    description: 'multi-articles',
+			    urls: links
+			});
+			ebook.publish().then(() =>
+				//ebook.download('epub')
+			    ebook.email('workinoppo@163.com')
+			).then(() => {
+			    
+			}).catch((error) => {
+			    
+			});
 
-		const ebook = new EpubPress({
-		    title: 'ebook-today',
-		    description: 'multi-articles',
-		    urls: links
-		});
-		ebook.publish().then(() =>
-			//ebook.download('epub')
-		    ebook.email('workinoppo@163.com')
-		).then(() => {
-		    
-		}).catch((error) => {
-		    
-		});
+			}, function (error) {
+			
+			});
+
+		
 	    // end of ebook convert 
         // epub make end 
       }
