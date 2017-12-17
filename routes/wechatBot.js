@@ -9,12 +9,63 @@ var AV = require('leanengine');
 var news = AV.Object.extend('news');
 var Answer = AV.Object.extend('answers');
 var bookmarks = AV.Object.extend('bookmarks');
+var weblinks = AV.Object.extend('weblinks');
 
 var special_events = [
   "http://ww2.sinaimg.cn/large/006tKfTcgy1ffk5cqlukoj30b407r0tk.jpg",
   "https://y.qq.com/n/yqq/song/002edeyc0xaACC.html?ADTAG=baiduald&play=1"
 
 ];
+
+
+// wechat focus history 
+var wechat_focus = [
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4NDI3NjcyNA==&scene=124#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4NTQ5NzAzMw==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5MjQxNjg2NA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA5MTE5MzExMQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIyMDEyMjM1MA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNTQyMzA4NA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NTIwMzIzNg==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NjQ5MTI5OA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI1NjE2MDAwMQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI2ODAzNzQ0Mw==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI0MjAwNzExOA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5MDM0NDY2Mg==&scene=123#wechat_redirect",
+"http://www.520fx.com/Resources/isvrshow/listnews.php",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4NTEyOTY1MA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NDA2MTgwMg==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIyMDI0NzEwOQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA5MzQ2Mjc3MA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNTM4NzU4Ng==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5MDE2MDYxMg==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIxNjA5MzUyNA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4ODQ1NzIzMA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA5ODY2NzUzMg==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA5ODg4Mzk2OQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI0MTAzMzY3Mw==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI1MTA0MDk4NQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI2NTE3MjAyNA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwMTE2OTQ2NQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNzcwMTA4Ng==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI0NTQyOTg2OA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NTEwMTAwNg==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA3MzU1MzMzNg==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNjU3NTU4OQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwNDkyNzM3OQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4OTk1MTczMA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA3MDI3MjI4OA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4ODMxNjk0NA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4MTE1ODQzOQ==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI1NjAzMDQ0NA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA5NjU5NjQ4MA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxODYzNjY5Ng==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIxNjU4Njg1Mw==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4ODUxNTczMA==&scene=123#wechat_redirect",
+"https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NjM3Nzk4Mg==&scene=123#wechat_redirect",
+
+];
+
 
 // bookmarks array 
 var bookmarks_array = [
@@ -210,6 +261,7 @@ var bookmarks_array = [
 "https://read.douban.com/ebook/12051836/?dcs=subject-rec&dcm=douban&dct=10549733",
 "https://read.douban.com/ebook/10183064/?icn=profile-guess",
 "https://github.com/feuyeux/jax-rs2-guide",
+"http://m.youku.com/video/id_XODUwNzQ0Mzg4.html?x=&from=y11.3-movie-grid-1095-9921.95882.2-1",
 "https://github.com/Ovilia/ThreeExample.js",
 "https://github.com/lukehoban/es6features",
 "https://www.cloudfoundry.org/category/developer-blog/",
@@ -226,6 +278,7 @@ var bookmarks_array = [
 "http://www.w3school.com.cn/",
 "http://www.bayescafe.com/php/getting-started-with-phpunit.html",
 "http://www.golaravel.com/",
+"http://m.youku.com/video/id_XODUwNTU3NzI0.html?x=&from=y11.3-movie-grid-1095-9921.95882.3-1",
 "http://www.doc88.com/p-1896812987112.html",
 "http://url.pansoso.com/?a=url&k=cda6eeed&u=aHR0cDovL3Bhbi5iYWlkdS5jb20vd2FwL2xpbms@dWs9MTM3ODIxNDY1MiZzaGFyZWlkPTUyMDI3Njc5NCZ0aGlyZD0w&t=44CKUEhQIE1WQ!W8gOWPkeWunuaImOOAiy4o5p2O5byA5raMKS5bUERGXS5AY2tvb2sucGRmX!WFjei0uemrmOmAn!S4i!i9vXznmb7luqYgLi4u&s=cGhwK212Y!W8gOWPkeWunuaImCtwZGY=",
 "http://www.jb51.net/article/63204.htm",
@@ -273,6 +326,7 @@ var bookmarks_array = [
 "http://www.open-open.com/lib/view/open1412993492311.html",
 "https://github.com/troolee/gridstack.js",
 "https://github.com/desandro/draggabilly",
+"http://m.youku.com/video/id_XNzM4NTIwMDk2.html?x=&from=y11.3-movie-grid-1095-9921.95832.6-1",
 "http://www.mkzhan.com/48161/",
 "http://www.probabilistic-robotics.org/",
 "https://github.com/fatedier/frp",
@@ -323,6 +377,7 @@ var bookmarks_array = [
 "http://blog.sina.com.cn/s/blog_ab45a5c90102xn7t.html",
 "https://www.infoq.com/articles/erlang-dsl",
 "http://gzdaily.dayoo.com/html/2014-09/20/node_1.htm",
+"http://m.youku.com/video/id_XNzc4NzE3MDQ0.html?x=&from=y11.3-movie-grid-1095-9921.95832.2-1",
 "http://www.readfar.com/books/52fb660c3063e10ecd00002b",
 "http://mp.weixin.qq.com/s?__biz=MzA3MDExMDUzMA==&mid=200734501&idx=1&sn=b3b33f24116c472cf7acc264cd1991a6#rd",
 "http://v.youku.com/v_show/id_XNzg3MTMwODc2.html?",
@@ -555,11 +610,19 @@ var most_visited_array = [
 "https://nanzhuang.tmall.com",
 "http://www.tianya.cn",
 "http://www.tuicool.com",
+"http://codepen.io",
 "http://jiankang.163.com",
 "www.xueqiu.com",
+"http://aosabook.org/en/index.html",
+"http://www.opclass.com",
+"http://haodoo.net",
+"https://ocw.mit.edu/courses"
+"https://dongxi.douban.com",
+"http://www.appinn.com",
 "http://jianggaowang.com",
 "http://www.demohour.com",
 "http://www.mop.com",
+"https://coding.net/home.html",
 "http://www.miaopai.com/miaopai/plaza",
 "http://health.sina.com.cn",
 ];
@@ -998,6 +1061,15 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
           type: "text",
           content: 'link detected'
         });
+
+  	// get the title and urls
+  	var title = message.Title;
+  	var link = message.Url;
+
+  	var aweblink = new weblinks();
+    aweblink.set('title', title);
+    aweblink.set('link',link);
+    aweblink.save();
 
 
 }).event(function(message, req, res, next) {
