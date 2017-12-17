@@ -616,7 +616,7 @@ var most_visited_array = [
 "http://aosabook.org/en/index.html",
 "http://www.opclass.com",
 "http://haodoo.net",
-"https://ocw.mit.edu/courses"
+"https://ocw.mit.edu/courses",
 "https://dongxi.douban.com",
 "http://www.appinn.com",
 "http://jianggaowang.com",
