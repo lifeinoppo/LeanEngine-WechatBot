@@ -1101,6 +1101,11 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     aweblink.set('link',link);
     aweblink.save();
 
+    res.reply({
+        type: "text",
+        content: 'eBook pushed'
+    });
+
     // convert link to ebook
     const ebook = new EpubPress({
     title: title,
@@ -1113,10 +1118,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
 		//ebook.download('epub')
 	    ebook.email('workinoppo@163.com')
 	).then(() => {
-	    res.reply({
-          type: "text",
-          content: 'eBook pushed'
-    	});
+	    
 	}).catch((error) => {
 	    
 	});
