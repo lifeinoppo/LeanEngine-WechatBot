@@ -938,10 +938,11 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
           type: "text",
           content: 'eBook pushed'
     	});
-        query.find().then(function (results) {
-		  
-		    for(var i=0;i<results.length;i++){
-		  	  links.push(results[i].link);
+        query.find().then(function (books) {
+		  	var j = books.length;
+		    for(var i=0;i<books.length;i++){
+		  	  var book = books[i];
+		  	  links.push(book.get('link'));
 		    }
 
 		}, function (error) {
