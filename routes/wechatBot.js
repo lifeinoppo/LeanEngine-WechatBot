@@ -933,10 +933,10 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         // first, get book links 
         var query = new AV.Query('weblinks');
         query.include('link');
-        var links = ['http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html'];
+        var links = [];
         query.find().then(function (results) {
 		  for(var i=0;i<results.length;i++){
-		  	links.push(results[i].get('link'));
+		  	links.push(results[i].link);
 		  }
 		}, function (error) {
 		});
