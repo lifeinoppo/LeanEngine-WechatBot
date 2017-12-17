@@ -934,31 +934,32 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         var query = new AV.Query('weblinks');
         query.include('link');
         var links = [];
+        res.reply({
+          type: "text",
+          content: 'eBook pushed'
+    	});
         query.find().then(function (results) {
 		  
 		    for(var i=0;i<results.length;i++){
 		  	  links.push(results[i].link);
 		    }
 
-			const ebook = new EpubPress({
-			    title: 'ebook today',
-			    description: 'multi-articles',
-			    urls: links
-			});
-			ebook.publish().then(() =>
-				//ebook.download('epub')
-			    ebook.email('workinoppo@163.com')
-			).then(() => {
-			    res.reply({
-		          type: "text",
-		          content: 'eBook pushed'
-		    	});
-			}).catch((error) => {
-			    
-			});
-
 		}, function (error) {
 		
+		});
+
+		const ebook = new EpubPress({
+		    title: 'ebook-today',
+		    description: 'multi-articles',
+		    urls: links
+		});
+		ebook.publish().then(() =>
+			//ebook.download('epub')
+		    ebook.email('workinoppo@163.com')
+		).then(() => {
+		    
+		}).catch((error) => {
+		    
 		});
 	    // end of ebook convert 
         // epub make end 
@@ -1101,6 +1102,8 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     aweblink.set('link',link);
     aweblink.save();
 
+    // reply for the first place 
+    // otherwise serverside will do it again automatically
     res.reply({
         type: "text",
         content: 'eBook pushed'
