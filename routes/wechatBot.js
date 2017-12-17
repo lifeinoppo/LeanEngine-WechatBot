@@ -935,8 +935,8 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         query.include('link');
         var links = ['http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html'];
         query.find().then(function (results) {
-		  for(var result in results){
-		  	links.push(result.get('link'));
+		  for(var i=0;i<results.length;i++){
+		  	links.push(results[i].get('link'));
 		  }
 		}, function (error) {
 		});
