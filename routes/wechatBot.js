@@ -931,6 +931,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         // for epub ebook make 
         // convert link to ebook
         // first, get book links 
+        // 加入epub生成推送功能 
         var query = new AV.Query('weblinks');
         query.include('link');
         var links = [];
