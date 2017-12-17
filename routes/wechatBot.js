@@ -17,6 +17,9 @@ var special_events = [
 
 ];
 
+// for convert link to epub books to ireader
+const EpubPress = require('epub-press-js');
+
 
 // wechat focus history 
 var wechat_focus = [
@@ -1060,7 +1063,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   	res.reply({
           type: "text",
           content: 'link detected'
-        });
+    });
 
   	// get the title and urls
   	var title = message.Title;
@@ -1070,6 +1073,28 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
     aweblink.set('title', title);
     aweblink.set('link',link);
     aweblink.save();
+
+    // convert link to ebook
+    const ebook = new EpubPress({
+    title: title,
+    description: '',
+    urls: [
+       	  	link
+       	  ]
+	});
+	ebook.publish().then(() =>
+		//ebook.download('epub')
+	    ebook.email('workinoppo@163.com')
+	).then(() => {
+	    res.reply({
+          type: "text",
+          content: 'eBook pushed'
+    	});
+	}).catch((error) => {
+	    
+	});
+
+	// end of ebook convert 
 
 
 }).event(function(message, req, res, next) {
