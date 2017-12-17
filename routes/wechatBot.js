@@ -935,29 +935,31 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         query.include('link');
         var links = [];
         query.find().then(function (results) {
-		  for(var i=0;i<results.length;i++){
-		  	links.push(results[i].link);
-		  }
+		  
+		    for(var i=0;i<results.length;i++){
+		  	  links.push(results[i].link);
+		    }
+
+			const ebook = new EpubPress({
+			    title: 'ebook today',
+			    description: 'multi-articles',
+			    urls: links
+			});
+			ebook.publish().then(() =>
+				//ebook.download('epub')
+			    ebook.email('workinoppo@163.com')
+			).then(() => {
+			    res.reply({
+		          type: "text",
+		          content: 'eBook pushed'
+		    	});
+			}).catch((error) => {
+			    
+			});
+
 		}, function (error) {
+		
 		});
-
-	    const ebook = new EpubPress({
-		    title: 'ebook today',
-		    description: 'multi-articles',
-		    urls: links
-		});
-		ebook.publish().then(() =>
-			//ebook.download('epub')
-		    ebook.email('workinoppo@163.com')
-		).then(() => {
-		    res.reply({
-	          type: "text",
-	          content: 'eBook pushed'
-	    	});
-		}).catch((error) => {
-		    
-		});
-
 	    // end of ebook convert 
         // epub make end 
       }
