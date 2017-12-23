@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var wechat = require('./routes/wechatBot');
+// for all in one page 
+var longpage = require('./routes/longpage');
 // var recommend = require('./routes/recommend');
 var cloud = require('./cloud');
 
@@ -55,6 +57,9 @@ app.get('/', function(req, res) {
 // 可以将一类的路由单独保存在一个文件中
 app.use('/wechat', wechat);
 // app.use('/recommend',recommend);
+
+// for all in one page , 长页面展示各个网站的常用结果
+app.use('/all-in-one',longpage);
 
 // 如果任何路由都没匹配到，则认为 404
 // 生成一个异常让后面的 err handler 捕获
