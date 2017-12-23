@@ -9,7 +9,9 @@ var router = require('express').Router();
 */
 
 router.use('/', function(req,res,next){
-	res.send("long page received...")
+	 res.render('index', {
+	    currentTime: new Date()
+	  });
 });
 
 
