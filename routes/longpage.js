@@ -10,7 +10,7 @@ var router = require('express').Router();
 
 router.use('/', function(req,res,next){
 	 res.render('X', {
-	    keyword: 'helloworld'
+	    keyword: req.query.q
 	  });
 });
 
