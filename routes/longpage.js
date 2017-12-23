@@ -9,8 +9,8 @@ var router = require('express').Router();
 */
 
 router.use('/', function(req,res,next){
-	 res.render('index', {
-	    currentTime: new Date()
+	 res.render('X', {
+	    keyword: 'helloworld'
 	  });
 });
 
