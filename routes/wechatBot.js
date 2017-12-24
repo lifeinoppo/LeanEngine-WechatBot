@@ -10,7 +10,7 @@ var news = AV.Object.extend('news');
 var Answer = AV.Object.extend('answers');
 var bookmarks = AV.Object.extend('bookmarks');
 var weblinks = AV.Object.extend('weblinks');
-var keywords = AV/Object.extend('keywords');
+var keywords = AV.Object.extend('keywords');
 
 var special_events = [
   "http://ww2.sinaimg.cn/large/006tKfTcgy1ffk5cqlukoj30b407r0tk.jpg",
