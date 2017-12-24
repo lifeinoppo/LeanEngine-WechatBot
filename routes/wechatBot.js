@@ -10,6 +10,7 @@ var news = AV.Object.extend('news');
 var Answer = AV.Object.extend('answers');
 var bookmarks = AV.Object.extend('bookmarks');
 var weblinks = AV.Object.extend('weblinks');
+var keywords = AV/Object.extend('keywords');
 
 var special_events = [
   "http://ww2.sinaimg.cn/large/006tKfTcgy1ffk5cqlukoj30b407r0tk.jpg",
@@ -853,7 +854,9 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   }
   */
   // end of special events 
-  
+
+  // 不再使用 baidu ocr技术支持 
+  /*
   ocr.scan({
     url:message.PicUrl, // 支持本地路径
     type:'text',
@@ -872,7 +875,14 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   }).catch(function (err) {
     console.log('err', err);
   })    
-  
+  */
+  // end of baidu ocr
+
+  // start of tencent youtu service
+
+
+
+  // end of tencent youtu service
 
 
 
@@ -902,7 +912,11 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
   // end of special events 
 
 
-
+  // store the keyword first 
+  var akeyword = new keywords();
+  akeyword.set('keyword', message.Content);
+  akeyword.save();
+  // end of save keywords .
 
   var keyArray = ['你好', '约吗','推送','七头牛'];
   var content = message.Content;
