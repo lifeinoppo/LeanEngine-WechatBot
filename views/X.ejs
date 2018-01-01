@@ -5,11 +5,21 @@
   </head>
   <body>
     <h1>bilibili</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% src="http://search.bilibili.com/all?keyword=<%= keyword %>" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% onload="iFrameHeight()"  src="http://search.bilibili.com/all?keyword=<%= keyword %>" frameborder=0>
      	<%= keyword %>
      </iframe>
+    <script type="text/javascript" language="javascript">
+        function iFrameHeight() {
+            var ifm= document.getElementById("mainweb");
+            var subWeb = document.frames ? document.frames["mainweb"].document :
+            ifm.contentDocument;
+            if(ifm != null && subWeb != null) {
+            ifm.height = subWeb.body.scrollHeight;
+            }
+        }
+    </script> 
     <h1>weixin</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% src="http://weixin.sogou.com/weixin?type=2&query=<%= keyword %>&ie=utf8&_sug_=n&sourceid=inttime_month" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% onload="iFrameHeight()" src="http://weixin.sogou.com/weixin?type=2&query=<%= keyword %>&ie=utf8&_sug_=n&sourceid=inttime_month" frameborder=0>
      	<%= keyword %>
      </iframe> 
     <h1>BiYing</h1>
