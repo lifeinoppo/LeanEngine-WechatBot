@@ -5,37 +5,27 @@
   </head>
   <body>
     <h1>bilibili</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% onload="iFrameHeight()"  src="http://search.bilibili.com/all?keyword=<%= keyword %>" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='2400' src="http://search.bilibili.com/all?keyword=<%= keyword %>" frameborder=0>
      	<%= keyword %>
      </iframe>
-    <script type="text/javascript" language="javascript">
-        function iFrameHeight() {
-            var ifm= document.getElementById("iframe4");
-            var subWeb = document.frames ? document.frames["iframe4"].document :
-            ifm.contentDocument;
-            if(ifm != null && subWeb != null) {
-            ifm.height = subWeb.body.scrollHeight;
-            }
-        }
-    </script> 
     <h1>weixin</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% onload="iFrameHeight()" src="http://weixin.sogou.com/weixin?type=2&query=<%= keyword %>&ie=utf8&_sug_=n&sourceid=inttime_month" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='2400' src="http://weixin.sogou.com/weixin?type=2&query=<%= keyword %>&ie=utf8&_sug_=n&sourceid=inttime_month" frameborder=0>
      	<%= keyword %>
      </iframe> 
     <h1>BiYing</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height=100% src="http://cn.bing.com/search?q=<%= keyword %>" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='2400' src="http://cn.bing.com/search?q=<%= keyword %>" frameborder=0>
      	<%= keyword %>
      </iframe>  
     <h1>ZHIHU</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='600' src="http://zhihu.sogou.com/zhihu?ie=utf8&p=73351201&query=<%= keyword %>" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='2600' src="http://zhihu.sogou.com/zhihu?ie=utf8&p=73351201&query=<%= keyword %>" frameborder=0>
      	<%= keyword %>
      </iframe> 
     <h1>1号店</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='600' src="http://search.yhd.com/c0-0/k<%= keyword %>" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='2600' src="http://search.yhd.com/c0-0/k<%= keyword %>" frameborder=0>
      	<%= keyword %>
      </iframe>  
     <h1>果壳</h1>
-     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='600' src="http://www.guokr.com/search/all/?wd=<%= keyword %>" frameborder=0>
+     <iframe name='iframe4' marginwidth=0 marginheight=0 width=100% height='2600' src="http://www.guokr.com/search/all/?wd=<%= keyword %>" frameborder=0>
      	<%= keyword %>
      </iframe>   
     <h1>丁香</h1>
