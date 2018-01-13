@@ -10,6 +10,9 @@ var router = require('express').Router();
 
 // 垂直深度搜索页面，暂时使用搜狗搜索引擎， 深度暂时设为 10
 // 首先组件自己的 感兴趣 词云 
+// 开发者头条 xxx xxx xxx 统一主页不同关键词长页面生成
+// more : 场景式搜索、标签云
+// 搜索周报， 一周搜索总结
 
 /*
 router.use('/', function(req,res,next){
