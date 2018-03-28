@@ -1,0 +1,41 @@
+// to write as xml format 
+    
+// here are some url lists
+http://m.leiphone.com
+http://www.github.com
+http://m.gkzhan.com
+http://avg.163.com
+http://linux.cn    //使用预先缓存技术
+http://3g.163.com
+
+
+
+// end of lists 
+
+    title
+
+    	url 
+    		http://m.leiphone.com/search?s=22222
+    		desc
+
+    			meta(extra data maybe useful)
+
+
+
+    title
+
+    	url 
+
+    		desc
+
+    			meta
+
+
+
+// 自动提示  auto-hint
+// start of list
+
+	url 
+		http://suggestion.baidu.com/su?wd=设计&p=3&cb=window.bdsug.sug
+
+	
