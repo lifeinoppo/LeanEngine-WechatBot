@@ -755,13 +755,18 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       */
       var query = new AV.Query('XXQGDA');
       query.include('content');
-      var content_list = ["重点","书院"];
-      query.containsAll('content', content_list);
-      query.first().then(function (answer) {
-	res.reply({
-	    type: "text",
-	    content: answer.get('content')
-	});
+      query.contains('content', content);
+      var reply_text = '';
+      var answer = '';
+      query.find().then(function (answers) {
+      	for (answer in answers)
+      	{
+      		reply_text+=answer.get('content');
+    	}
+    	res.reply({
+		    type: "text",
+		    content: reply_text
+	 	});
       });
       break;
 
