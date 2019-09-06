@@ -757,16 +757,15 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       query.include('content');
       query.contains('content', content);
       var reply_text = '';
-      var answer = '';
       query.find().then(function (answers) {
-      	for (answer in answers)
+      	for (var index in answers)
       	{
-      		reply_text+=answer.get('content');
+      		reply_text+=answers[index].get('content');
     	}
-    	res.reply({
-		    type: "text",
-		    content: reply_text
-	 	});
+	res.reply({
+	    type: "text",
+	    content: reply_text
+	});
       });
       break;
 
