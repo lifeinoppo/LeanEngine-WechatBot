@@ -742,6 +742,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       }
       break;
     default:
+     /* 去掉多端搜索，改为学习强国
       var bookmark_bias = bookmarks_array.length-1;
       var bookmark_index = new Number(Math.random()*bookmark_bias).toFixed(0);  
       res.reply([
@@ -751,6 +752,21 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
         {title:'BiYing',  description:'BiYing', picurl:'http://cn.bing.com/sa/simg/sw_mg_l_4e_ly_cn.png', url : 'http://cn.bing.com/search?q='+content }
          ]);
       break;
+      */
+      var query = new AV.Query('XXQGDA');
+      query.include('content');
+      var reply = '';
+      query.find().then(function (answers) {
+      	answers.forEach(function(answer) {
+      		reply+=answer.get('content');
+    	});
+      });
+	  res.reply({
+	    type: "text",
+	    content: reply
+	  });
+	  break;
+
   }
 }).voice(function(message, req, res, next) {
   // message为音频内容
