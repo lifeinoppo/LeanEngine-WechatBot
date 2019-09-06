@@ -758,14 +758,14 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       var reply = '';
       query.find().then(function (answers) {
       	answers.forEach(function(answer) {
-      		reply+=answer.get('content');
+      		res.reply({
+			    type: "text",
+			    content: answer.get('content');
+			});
+      		
     	});
       });
-	  res.reply({
-	    type: "text",
-	    content: reply
-	  });
-	  break;
+      break;
 
   }
 }).voice(function(message, req, res, next) {
