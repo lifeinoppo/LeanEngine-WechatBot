@@ -759,9 +759,9 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       query.find().then(function (answers) {
       	answers.forEach(function(answer) {
       		res.reply({
-			    type: "text",
-			    content: answer.get('content');
-			});
+		    type: "text",
+		    content: answer.get('content')
+		});
       		
     	});
       });
