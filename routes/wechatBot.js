@@ -755,8 +755,8 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
       */
       var query = new AV.Query('XXQGDA');
       query.include('content');
-      query.contains('content', content);
-      var reply = '';
+      var content_list = content.split(' ');
+      query.containsAll('content', content_list);
       query.find().then(function (answers) {
       	answers.forEach(function(answer) {
       		res.reply({
