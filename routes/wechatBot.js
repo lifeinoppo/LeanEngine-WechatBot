@@ -753,7 +753,7 @@ router.use('/', wechat(config.token).image(function(message, req, res, next) {
          ]);
       break;
       */
-      var query = new AV.Query('xxqgda');
+      var query = new AV.Query('XXQGDA');
       query.include('content');
       query.contains('content', content);
       var reply_text = '';
